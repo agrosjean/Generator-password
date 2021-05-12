@@ -45,6 +45,8 @@ function getPassword() {
 
 
     // Need to create a conditional statement to check if user included ATLEAST 1 of the char types. Return user back to start of application 
+    var includeNumbArray = confirm("Would you like to use numbers in your password?");
+
     if (includeNumbArray !== "Yes" && includeNumbArray !== "No") {
         alert("Click on Yes or No");
         return;
@@ -63,7 +65,7 @@ function getPassword() {
     } else {
 
     }
-    var includeSpecialChars = confirm("Would you like to use Upper-case in your password?");
+    var includeUpperCase = confirm("Would you like to use Upper-case in your password?");
 
     if (includeUpperCase !== "Yes" && includeUpperCase !== "No") {
         alert("Click on Yes or No");
@@ -73,7 +75,7 @@ function getPassword() {
     } else {
 
     }
-    var includeSpecialChars = confirm("Would you like to use Lower-case in your password?");
+    var includeLowerCase = confirm("Would you like to use Lower-case in your password?");
 
     if (includeLowerCase !== "Yes" && includeLowerCase !== "No") {
         alert("Click on Yes or No");
@@ -133,7 +135,7 @@ function generatingPassword() {
     // Two methods to look up here are : - push & - concat
 
     if (options.specialChar) {
-        possibleChars = possibleChars.concat(specialChar);
+        includeSpecialChars = includeSpecialChars.concat(specialChar);
     }
     if (options.lowerCase) {
         possibleChars = possibleChars.concat(lowerCase);
