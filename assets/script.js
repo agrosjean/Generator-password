@@ -138,13 +138,13 @@ function generatingPassword() {
         includeSpecialChars = includeSpecialChars.concat(specialChar);
     }
     if (options.lowerCase) {
-        possibleChars = possibleChars.concat(lowerCase);
+        includeLowerCase = possibleChars.concat(lowerCase);
     }
     if (options.upperCase) {
-        possibleChars = possibleChars.concat(upperCase);
+        includeUpperCase = possibleChars.concat(upperCase);
     }
     if (options.numbArray) {
-        possibleChars = possibleChars.concat(numbArray);
+        includeNumbArray = possibleChars.concat(numbArray);
     }
 
 
