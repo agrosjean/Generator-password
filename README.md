@@ -2,7 +2,8 @@
 
 ![Live Site]: https://agrosjean.github.io/Generator-password/
 
-![ScreenShot]: <img width="1440" alt="Generatorpass" src="https://user-images.githubusercontent.com/74931814/117559346-7fa10d00-b052-11eb-93af-dbf4979811fa.png">
+![ScreenShot]: <img width="1186" alt="Screenshot 2021-05-12 at 16 23 15" src="https://user-images.githubusercontent.com/74931814/118043098-ecfab980-b342-11eb-95d6-dc9b26e6b966.png">
+
 
 
 
