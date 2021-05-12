@@ -53,7 +53,7 @@ function getPassword() {
     } else {
 
     }
-    var includeSpecialChars = confirm("What type of characters would you like to use in your password?");
+    var includeSpecialChars = confirm("Would you like to use characters in your password?");
 
     if (includeSpecialChars !== "Yes" && includeSpecialChars !== "No") {
         alert("Click on Yes or No");
@@ -63,6 +63,7 @@ function getPassword() {
     } else {
 
     }
+    var includeSpecialChars = confirm("Would you like to use Upper-case in your password?");
 
     if (includeUpperCase !== "Yes" && includeUpperCase !== "No") {
         alert("Click on Yes or No");
@@ -72,6 +73,7 @@ function getPassword() {
     } else {
 
     }
+    var includeSpecialChars = confirm("Would you like to use Lower-case in your password?");
 
     if (includeLowerCase !== "Yes" && includeLowerCase !== "No") {
         alert("Click on Yes or No");
