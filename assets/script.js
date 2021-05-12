@@ -3,7 +3,8 @@
 var specialChars = ["!", ",", "@", "#", "$", "$", "%", "ˆ", "&", "*", "(", ")", "_", "-", "{", "}", "[", "]"];
 
 // number Array 
-var numbArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var numbArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+
 
 // lower case array
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -14,98 +15,100 @@ var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 // Function to prompt the user for password options
 function getPassword() {
 
+    var options = {};
+
     // Create a variable to store the lenght of password
-    var length = parseInt(
+    options.pwLength = parseInt(
         prompt("How many characters would you like your password to be?")
     );
 
     // Create conditional statement to check if password lenght is actually a number
-    if (Number.isNaN(length)) {
+    if (Number.isNaN(options.pwLength)) {
         alert("password must be a number");
         return;
     }
 
     // Conditional statement to check if password is atleast 8 chars
-    if (length < 8) {
+    if (options.pwLength < 8) {
         alert("Password length must be AT LEAST 8 characters")
         return;
     };
 
     // Conditional statement to check if password lenght is at least 128 characters 
-    if (length > 128) {
+    if (options.pwLength > 128) {
         alert("Password cannot contain more than 128 chars!!");
         return;
     };
 
     // Create confirmation prompts for the type of characters the user wants to use in there password. 
-    var includeSpecialChars = confirm("What type of characters would you like to use in your password?");
-    var includeNumbArray = confirm("Which numbers would you like to use in your password?");
+    var includeSpecialChars = confirm("Would you like to use characters in your password?");
+    var includeNumbArray = confirm("Would you like to use numbers in your password?");
     var includeUpperCase = confirm("Would you like upper-cases in your password?");
     var includeLowerCase = confirm("Would you like lower-cases in your password?");
 
 
     // Need to create a conditional statement to check if user included ATLEAST 1 of the char types. Return user back to start of application 
-    var includeNumbArray = confirm("Would you like to use numbers in your password?");
+    //var includeNumbArray = confirm("Would you like to use numbers in your password?");
 
-    if (includeNumbArray !== "Yes" && includeNumbArray !== "No") {
+    if (includeNumbArray !== true && includeNumbArray !== false) {
         alert("Click on Yes or No");
         return;
-    } else if (includeNumbArray === "Yes") {
-        options.includeNumbArray = numbArray;
+    } else if (includeNumbArray === true) {
+        options.includeNumbArray = includeNumbArray;
     } else {
-
+        options.includeNumbArray = false;
     }
-    var includeSpecialChars = confirm("Would you like to use characters in your password?");
 
-    if (includeSpecialChars !== "Yes" && includeSpecialChars !== "No") {
+    if (includeSpecialChars !== true && includeSpecialChars !== false) {
         alert("Click on Yes or No");
         return;
-    } else if (includeSpecialChars === "Yes") {
-        options.includeSpecialChars = specialchars;
+    } else if (includeSpecialChars === true) {
+        options.includeSpecialChars = includeSpecialChars;
     } else {
-
+        options.includeSpecialChars = false;
     }
-    var includeUpperCase = confirm("Would you like to use Upper-case in your password?");
 
-    if (includeUpperCase !== "Yes" && includeUpperCase !== "No") {
+
+    if (includeUpperCase !== true && includeUpperCase !== false) {
         alert("Click on Yes or No");
         return;
-    } else if (includeUpperCase === "Yes") {
-        options.includeUpperCase = upperCase;
+    } else if (includeUpperCase === true) {
+        options.includeUpperCase = includeUpperCase;
     } else {
-
+        options.includeUpperCase = false;
     }
-    var includeLowerCase = confirm("Would you like to use Lower-case in your password?");
 
-    if (includeLowerCase !== "Yes" && includeLowerCase !== "No") {
+
+    if (includeLowerCase !== true && includeLowerCase !== false) {
         alert("Click on Yes or No");
         return;
-    } else if (includeLowerCase === "Yes") {
-        options.includeLowerCase = lowerCase;
+    } else if (includeLowerCase === true) {
+        options.includeLowerCase = includeLowerCase;
     } else {
-
+        options.includeLowerCase = false;
     }
 
 
 
 
     // Create an object to store the user input
-    var possiblePass = {
-        // We need to store length and all characters selected by User
-        length: includeLength,
-        specialChars: includeSpecialChars,
-        numbArray: includeNumbArray,
-        upperCase: includeUpperCase,
-        lowerCase: includeLowerCase,
-    }
-    // console.log(possiblePass);
-    return possiblePass;
+    // var possiblePass = {
+    //     // We need to store length and all characters selected by User
+    //     length: includeLength,
+    //     specialChars: includeSpecialChars,
+    //     numbArray: includeNumbArray,
+    //     upperCase: includeUpperCase,
+    //     lowerCase: includeLowerCase,
+    // }
+    console.log(options);
+    return options;
 
 }
 
 // Create a function for getting a random element from an array
 function generatePassword(array) {
-    var random = Math.floor(Math.random() * arr.length);
+    var random = Math.floor(Math.random() * array.length);
+    console.log(random)
 
     // some kind of math problem arr.length 
     //  Save them to a variable (Check Rock Paper Scissors)
@@ -113,6 +116,7 @@ function generatePassword(array) {
 
     return random;
 }
+
 
 // Create a function to generate the password with the user input
 function generatingPassword() {
@@ -127,6 +131,7 @@ function generatingPassword() {
     // Create a variable to store the types of characters to include into the password
     var possibleChars = [];
 
+
     // Create a variable to store each type of guaranted characters 
     var guarChars = [];
 
@@ -134,26 +139,33 @@ function generatingPassword() {
     //  than push the new random characters into guaranted characters.
     // Two methods to look up here are : - push & - concat
 
-    if (options.specialChar) {
-        includeSpecialChars = includeSpecialChars.concat(specialChar);
+    if (options.includeSpecialChars) {
+        possibleChars = possibleChars.concat(specialChars);
+        console.log(possibleChars);
     }
-    if (options.lowerCase) {
-        includeLowerCase = possibleChars.concat(lowerCase);
+    if (options.includeLowerCase) {
+        possibleChars = possibleChars.concat(lowerCase);
+        console.log(possibleChars);
     }
-    if (options.upperCase) {
-        includeUpperCase = possibleChars.concat(upperCase);
+    if (options.includeUpperCase) {
+        possibleChars = possibleChars.concat(upperCase);
+        console.log(possibleChars);
     }
-    if (options.numbArray) {
-        includeNumbArray = possibleChars.concat(numbArray);
+    if (options.includeNumbArray) {
+        possibleChars = possibleChars.concat(numbArray);
+        console.log(possibleChars);
     }
 
 
 
     // Create a for loop to iterate over the password length form from the options object.
-    for (var i = 0; i < options.length; i++) {
-        var possibleCharacters = generatePassword(possibleCharacters);
-
+    for (var i = 0; i < options.pwLength; i++) {
+        console.log(i);
+        var possibleCharacter = possibleChars[generatePassword(possibleChars)];
+        console.log(possibleCharacter);
         passResult.push(possibleCharacter)
+
+        console.log(passResult);
     }
     return passResult.join('');
 
